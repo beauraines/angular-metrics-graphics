@@ -49,7 +49,6 @@ ngMG.directive('chart', function() {
       options.target = '#' + element[0].id;
       // create the chart
       scope.$watch('data', function(){
-        console.log('MG.scope.data',scope.data);
         options.data = scope.data || [];
         MG.data_graphic(options);
       });      
