@@ -100,7 +100,9 @@ ngMG.directive('chartTimeSeries', function() {
 
         //Convert date strings to dates
         for (var i = 0; i < scope.data.length; i++) {
+          if (typeof(scope.data[i][1].date) == 'string') {
             scope.data[i] = MG.convert.date(scope.data[i], 'date');
+          }
         }
 
         options.data = scope.data || [];
