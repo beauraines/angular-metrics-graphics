@@ -51,7 +51,7 @@ ngMG.directive('chart', function() {
       scope.$watch('data', function(){
         options.data = scope.data || [];
         MG.data_graphic(options);
-      });      
+      },true);      
     },
     restrict: 'E',
     scope: {
@@ -105,7 +105,7 @@ ngMG.directive('chartTimeSeries', function() {
 
         options.data = scope.data || [];
         MG.data_graphic(options);
-      });      
+      },true);      
     },
     restrict: 'E',
     scope: {
