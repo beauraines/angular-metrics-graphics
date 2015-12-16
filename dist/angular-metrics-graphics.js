@@ -41,16 +41,22 @@ angular.module('metricsgraphics', []).directive('chart', function() {
         }
         return 'mg-chart-' + s;
       }
+      // set target configuration options
       element[0].id = element[0].id ? element[0].id : randomString(5);
-      // set the data and target configuration options
-      options.data = scope.data || [];
       options.target = '#' + element[0].id;
-      // preprocess data
-      if (scope.convertDateField) {
-        options.data = MG.convert.date(options.data, scope.convertDateField);
-      }
+
       // create the chart
-      MG.data_graphic(options);
+      scope.$watch('data', function(){
+        // set the data 
+        options.data = scope.data || [];
+        // preprocess data, if a date field is provided
+        if (scope.convertDateField )  {
+          if (typeof(options.data[0][scope.convertDateField]) === 'string') {
+            options.data = MG.convert.date(options.data, scope.convertDateField);  
+          }
+        }
+        MG.data_graphic(options);
+      },true); 
     },
     restrict: 'E',
     scope: {
