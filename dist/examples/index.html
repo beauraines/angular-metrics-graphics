@@ -76,13 +76,76 @@
   <div class="container" id="for-beau-raines" ng-controller="ExampleCtrl">
     <div class="row">
       <div class="col-lg-6">
+        <div class="text-center">Beau's downloads</div>
         <chart data="[{'date':'2015-11-01','value':1},{'date':'2015-11-02','value':2},{'date':'2015-11-03','value':3}]"
                convert-date-field="date"
                options="{title:'Beau\'s Downloads',description:'This is an example of how to preprocess inline data.',x_accessor:'date',y_accessor:'value'}">
         </chart>
       </div>
+
+      <div class="col-lg-6">
+        <div class="text-center">Single Data Series</div>
+        <chart data="[  {'date':'2014-11-01','value':12, 'smells': 5},
+                      {'date':'2014-11-02','value':18, 'smells': 12},
+                      {'date':'2014-11-03','value':22, 'smells': 15},
+                      {'date':'2014-11-04','value':13, 'smells': 7},
+                      {'date':'2014-11-05','value':24, 'smells': 4}
+                     ]"
+              options="{  title: 'Single Data Series',
+                    description: 'This graphic shows a time-series of downloads.',
+                    x_accessor: 'date',
+                  y_accessor: 'value',
+            }"
+            convert-date-field="date">
+        </chart>
+     </div>
     </div>
   </div>
+
+
+  <div class="container" id="beau-test-case-3" ng-controller="ExampleCtrl">
+    <div class="row">
+      <div class="col-lg-6">
+      <div class="text-center">Multiple Y-Accessors</div>
+        <chart data="[  {'date':'2014-11-01','value':12, 'smells': 5},
+                      {'date':'2014-11-02','value':18, 'smells': 12},
+                      {'date':'2014-11-03','value':22, 'smells': 15},
+                      {'date':'2014-11-04','value':13, 'smells': 7},
+                      {'date':'2014-11-05','value':24, 'smells': 4}
+                     ]"
+              options="{  title: 'Multiple Y-Accessors',
+                    description: 'This graphic shows a time-series of downloads.',
+                    x_accessor: 'date',
+                  y_accessor: ['value','smells'],
+            }"
+            convert-date-field="date">
+        </chart>
+     </div>
+
+      <div class="col-lg-6">
+          <div class="text-center">Multiple Data Series in nested array object</div>
+          <chart data="[  [{'date':'2014-11-01','value':12},
+                        {'date':'2014-11-02','value':18},
+                        {'date':'2014-11-03','value':22},
+                        {'date':'2014-11-04','value':13},
+                        {'date':'2014-11-05','value':24}],
+                        [{'date':'2014-11-01','value':14},
+                        {'date':'2014-11-02','value':16},
+                        {'date':'2014-11-03','value':15},
+                        {'date':'2014-11-04','value':30},
+                        {'date':'2014-11-05','value':20}]
+                       ]"
+                options="{  title: 'Multiple Data Series in nested array object',
+                      description: 'This chart fails with Beaus changes.',
+                      x_accessor: 'date',
+                    y_accessor: 'value',
+              }"
+              convert-date-field="date">
+          </chart>
+     </div>
+    </div>
+  </div>
+
 
 </body>
 </html>
