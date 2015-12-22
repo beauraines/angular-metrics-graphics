@@ -105,6 +105,13 @@ ngMG.directive('chartTimeSeries', function() {
           }
         }
 
+      // override default options with values from the scope
+      if (scope.options) {
+        Object.keys(scope.options).forEach(function(key) {
+          options[key] = scope.options[key];
+        });
+      }
+
         options.data = scope.data || [];
         MG.data_graphic(options);
       },true);      
